@@ -1,4 +1,5 @@
 require 'socket'
+require_relative 'response'
 
 module Serverb
 
@@ -20,7 +21,8 @@ module Serverb
 
       def start_thread
         Thread.start(@conn) do |conn|
-          conn.puts "Hello world"
+          response = Serverb::Response.new
+          conn.puts response.set_status_line
           conn.close
         end
       end
