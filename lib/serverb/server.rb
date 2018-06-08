@@ -4,28 +4,28 @@ require_relative 'logger'
 
 module Serverb
 
-  class Server
+  module Server
 
-    class << self
-      def start port = '3000'
-        @server_socket = TCPServer.new port
-        puts Serverb::Logger.print_start_message
-        run
-      end
+    extend self
 
-      def run
-        loop {
-          @conn = @server_socket.accept
-          start_thread
-        }
-      end
+    def start port = '3000'
+      @server_socket = TCPServer.new port
+      puts Serverb::Logger.print_start_message
+      run
+    end
 
-      def start_thread
-        Thread.start(@conn) do |conn|
-          response = Serverb::Response.new
-          conn.puts response.set_status_line
-          conn.close
-        end
+    def run
+      loop {
+        @conn = @server_socket.accept
+        start_thread
+      }
+    end
+
+    def start_thread
+      Thread.start(@conn) do |conn|
+        response = Serverb::Response.new
+        conn.puts response.set_status_line
+        conn.close
       end
     end
 
