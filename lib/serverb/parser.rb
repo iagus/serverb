@@ -18,7 +18,7 @@ module Serverb
       params = path.split('?').last
     end
 
-    def params_to_hash params
+    def params_to_json params
       params_array = params.split('&')
       params_array = params_array.map{ |param| param.split('=') }.to_h
     end
