@@ -1,5 +1,6 @@
 require 'socket'
 require_relative 'response'
+require_relative 'logger'
 
 module Serverb
 
@@ -8,7 +9,7 @@ module Serverb
     class << self
       def start port = '3000'
         @server_socket = TCPServer.new port
-        puts "[INFO] [#{Time.now}] Starting server..."
+        puts Serverb::Logger.print_start_message
         run
       end
 
