@@ -23,8 +23,11 @@ module Serverb
 
     def start_thread
       Thread.start(@conn) do |conn|
-        response = Serverb::Response.new
-        conn.puts response.set_status_line
+        puts @conn.gets
+
+        response = Serverb::Response.new 200, 'OK'
+        conn.puts response.set_response_headers
+        
         conn.close
       end
     end
