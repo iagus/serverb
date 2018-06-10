@@ -4,8 +4,6 @@ module Serverb
 
     extend self
 
-    @@REGEX = { uri: /(^\/.*(?=\?)|^\/.*)/ }
-
     def parse_request_line req
       method, path, protocol = req.split(' ')
     end
