@@ -16,9 +16,13 @@ module Serverb
       params = path.split('?').last
     end
 
-    def params_to_json params
+    def params_to_hash params
       params_array = params.split('&')
       params_array = params_array.map{ |param| param.split('=') }.to_h
+    end
+
+    def are_params_present? path
+      path.include?('?') && path.split('?').count > 0
     end
 
   end

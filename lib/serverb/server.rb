@@ -24,13 +24,17 @@ module Serverb
     def start_thread
       Thread.start(@conn) do |conn|
         request = @conn.gets
-        puts Serverb::Logger.print_log_request(request)
+        print_request_data(request)
 
         response = Serverb::Response.new 200, 'OK'
         conn.puts response.set_response_headers
         
         conn.close
       end
+    end
+
+    def print_request_data request
+      puts Serverb::Logger.print_log_request(request)
     end
 
   end
