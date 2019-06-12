@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "serverb"
   spec.version       = Serverb::VERSION
   spec.authors       = ["iagus"]
-  spec.email         = ["santiago.fernandez@the-cocktail.com"]
+  spec.email         = ["santiago.fgonz@the-cocktail.com"]
 
   spec.summary       = %q{Simple, expertimental Ruby-based server.}
   spec.homepage      = "https://github.com/iagus/serverb"
